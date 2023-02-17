@@ -12,7 +12,7 @@ import {
 import ChatBox from "../chat/ChatBox";
 import "./KeywordPopup.css";
 import customColors from "../CustomColors";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 const KeywordPopup = ({ colorID, keyword, searchResult, outLink, chats }) => {
   const openInNewTab = (url) => {

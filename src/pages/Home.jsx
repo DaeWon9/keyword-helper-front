@@ -3,7 +3,8 @@ import Sender from "../components/chat/Sender";
 import ChatBox from "../components/chat/ChatBox";
 import UserList from "../components/user/UserList";
 import io from "socket.io-client";
-import { searchKeyword } from "../api/Search";
+import useSound from "use-sound";
+import mySound from "../assets/alert.mp3";
 import "./Home.css";
 import KeywordMenu from "../components/keyword/KeywordMenu";
 
@@ -16,11 +17,16 @@ const Home = () => {
   const [isEnter, setIsEnter] = useState(false);
   const [chatData, setChatData] = useState([]);
   const [userStatus, setUserStatus] = useState([]);
+  const [play] = useSound(mySound);
 
   const enterRoom = () => {
     socket.emit("enter", localStorage.getItem("userId"), localStorage.getItem("userNickName"));
     setIsEnter(true);
   };
+
+  useEffect(() => {
+    play();
+  }, [chatData]);
 
   useEffect(() => {
     if (isEnter) {
