@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Sender from "../components/chat/Sender";
 import ChatBox from "../components/chat/ChatBox";
 import UserBox from "../components/UserBox";
-import KeywordBox from "../components/KeywordBox";
+import KeywordBox from "../components/keyword/KeywordBox";
 import io from "socket.io-client";
 import { searchKeyword } from "../api/Search";
 import "./Home.css";
@@ -66,14 +66,14 @@ const Home = () => {
             </div>
           </div>
           <div className="home-body-menu">
-            {Array.apply(null, Array(10)).map((e, id) => (
+            {/* {Array.apply(null, Array(10)).map((e, id) => (
               <KeywordBox
                 key={id}
                 colorID={id}
                 text={`${id}st Keyword`}
                 onClick={() => searchKeyword("노트북").then((res) => console.log(res))}
               />
-            ))}
+            ))} */}
           </div>
         </div>
       </div>
