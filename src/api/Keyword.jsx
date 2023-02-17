@@ -1,15 +1,25 @@
 import axios from "axios";
-axios.defaults.withCredentials = true;
+axios.defaults.withCredentials = false;
 
-export const getKeyword = async (userId) => {
-  const data = await axios({
-    method: "POST",
-    url: import.meta.env.VITE_KEYWORD_BACK_URL + "/~~",
-    mode: "cors",
-    headers: {
-      "Content-Type": "multipart/form-data",
-    },
-    data: { id: userId },
-  });
+const getKeywordByID = async (userID) => {
+  const { data } = await axios.post(
+    import.meta.env.VITE_KEYWORD_BACK_URL + "/chatgpt/login?user_id=" + userID,
+  );
   return data;
 };
+
+const getKeywordByTime = async (time) => {
+  const { data } = await axios.post(
+    import.meta.env.VITE_KEYWORD_BACK_URL + "/chatgpt/time?minutes=" + time,
+  );
+  return data;
+};
+
+const getChatByKeyword = async (keyword) => {
+  const { data } = await axios.get(
+    import.meta.env.VITE_KEYWORD_BACK_URL + "/chats/filter_by_keyword?keyword=" + keyword,
+  );
+  return data;
+};
+
+export { getKeywordByID, getKeywordByTime, getChatByKeyword };

@@ -2,11 +2,10 @@ import React, { useState, useEffect } from "react";
 import Sender from "../components/chat/Sender";
 import ChatBox from "../components/chat/ChatBox";
 import UserBox from "../components/UserBox";
-import KeywordBox from "../components/keyword/KeywordBox";
 import io from "socket.io-client";
 import { searchKeyword } from "../api/Search";
 import "./Home.css";
-import { Icon, IconSize, LightbulbIcon } from "@channel.io/bezier-react";
+import KeywordMenu from "../components/keyword/KeywordMenu";
 
 const StatusType = {
   Online: "Online",
@@ -68,21 +67,7 @@ const Home = () => {
             </div>
           </div>
           <div className="home-body-menu">
-            <div className="home-body-menu-header">
-              <Icon source={LightbulbIcon} size={IconSize.L} marginRight={3} marginLeft={10} />
-              <h1>Keywords</h1>
-            </div>
-            <div className="home-body-menu-content">
-              {Array.apply(null, Array(10)).map((e, id) => (
-                <KeywordBox
-                  key={id}
-                  colorID={id}
-                  keyword={`${id}번째 키워드`}
-                  description={`${id}번째 키워드입니다.`}
-                  buttonStyle={{ display: "block", margin: "10px 20px" }}
-                />
-              ))}
-            </div>
+            <KeywordMenu />
           </div>
         </div>
       </div>

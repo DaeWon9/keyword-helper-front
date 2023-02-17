@@ -12,7 +12,7 @@ import {
 import "./KeywordPopup.css";
 import customColors from "../CustomColors";
 
-const KeywordPopup = ({ colorID, keyword, description, outLink }) => {
+const KeywordPopup = ({ colorID, keyword, description, outLink, chats }) => {
   const openInNewTab = (url) => {
     window.open(url, "_blank", "noopener,noreferrer");
   };
@@ -53,18 +53,15 @@ const KeywordPopup = ({ colorID, keyword, description, outLink }) => {
           </div>
           <div className="modal-right">
             <div className="modal-chat">
-              <p>Hello World1!</p>
-              <p>Hello World2!</p>
-              <p>Hello World3!</p>
-              <p>Hello World1!</p>
-              <p>Hello World2!</p>
-              <p>Hello World3!</p>
-              <p>Hello World1!</p>
-              <p>Hello World2!</p>
-              <p>Hello World3!</p>
-              <p>Hello World1!</p>
-              <p>Hello World2!</p>
-              <p>Hello World3!</p>
+              {!Array.isArray(chats) ? (
+                <></>
+              ) : (
+                chats.map((chat) => (
+                  <p>
+                    {chat.user_id} sent {chat.message} at {chat.created_at}
+                  </p>
+                ))
+              )}
             </div>
           </div>
         </div>
