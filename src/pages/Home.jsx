@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import Sender from "../components/chat/Sender";
 import ChatBox from "../components/chat/ChatBox";
 import UserList from "../components/user/UserList";
-import KeywordBox from "../components/keyword/KeywordBox";
 import io from "socket.io-client";
 import { searchKeyword } from "../api/Search";
 import "./Home.css";
+import KeywordMenu from "../components/keyword/KeywordMenu";
 
 const socket = io(import.meta.env.VITE_CHAT_BACK_URL, {
   withCredentials: true,
@@ -117,14 +117,7 @@ const Home = () => {
             </div>
           </div>
           <div className="home-body-menu">
-            {/* {Array.apply(null, Array(10)).map((e, id) => (
-              <KeywordBox
-                key={id}
-                colorID={id}
-                text={`${id}st Keyword`}
-                onClick={() => searchKeyword("노트북").then((res) => console.log(res))}
-              />
-            ))} */}
+            <KeywordMenu />
           </div>
         </div>
       </div>

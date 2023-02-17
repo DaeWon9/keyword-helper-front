@@ -50,6 +50,7 @@
   width: 100%;
   height: calc(100% - 120px);
   background-color: beige;
+  overflow-x: hidden;
   overflow-y: auto;
 }
 

@@ -22,7 +22,7 @@ const Colors = [
   "MonochromeDark",
 ];
 
-const KeywordBox = ({ colorID, keyword, description, buttonStyle = {} }) => {
+const KeywordBox = ({ colorID, keyword, description, chats, buttonStyle = {} }) => {
   colorID = colorID % customColors.length;
 
   return (
@@ -40,6 +40,7 @@ const KeywordBox = ({ colorID, keyword, description, buttonStyle = {} }) => {
         keyword={keyword}
         description={description}
         outLink={`https://www.google.com/search?q=${keyword}`}
+        chats={chats}
       />
     </Modal>
   );
