@@ -12,21 +12,55 @@ import {
 import ChatBox from "../chat/ChatBox";
 import "./KeywordPopup.css";
 import customColors from "../CustomColors";
+import { useState, useRef } from "react";
 
-const KeywordPopup = ({ colorID, keyword, description, outLink, chats }) => {
+const KeywordPopup = ({ colorID, keyword, searchResult, outLink, chats }) => {
   const openInNewTab = (url) => {
     window.open(url, "_blank", "noopener,noreferrer");
   };
+  const [imgShow, setImgShow] = useState(false);
+  const keywordBoxRef = useRef();
 
   return (
     <ModalContent>
       <ModalBody>
         <div className="modal-container">
           <div className="modal-left">
-            <div className="modal-keyword-box" style={{ backgroundColor: customColors[colorID] }}>
-              <h1 className="modal-keyword-title">{keyword}</h1>
+            {imgShow && searchResult && searchResult.thumbnail !== "" ? (
+              <div
+                style={{
+                  position: "absolute",
+                  left: keywordBoxRef.current.offsetLeft - 100,
+                  top: keywordBoxRef.current.offsetTop,
+                }}
+              >
+                <img
+                  src={searchResult ? searchResult.thumbnail : ""}
+                  width={100}
+                  height={100}
+                ></img>
+              </div>
+            ) : (
+              <></>
+            )}
+            <div
+              className="modal-keyword-box"
+              ref={keywordBoxRef}
+              style={{ backgroundColor: customColors[colorID] }}
+            >
+              <h1
+                className="modal-keyword-title"
+                onMouseEnter={() => setImgShow(true)}
+                onMouseLeave={() => setImgShow(false)}
+              >
+                {keyword}
+              </h1>
               <Tooltip
-                content={description}
+                content={
+                  searchResult
+                    ? String(searchResult.description).replaceAll("<b>", "").replaceAll("</b>", "")
+                    : ""
+                }
                 delayHide={0}
                 delayShow={0}
                 lazy

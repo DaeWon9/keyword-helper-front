@@ -93,7 +93,9 @@ const Home = () => {
       });
 
       socket.on("not_read", (msg) => {
-        alert(`${msg}개의 읽지 않은 메세지가 존재합니다.`);
+        if (msg !== 0) {
+          alert(`${msg}개의 읽지 않은 메세지가 존재합니다.`);
+        }
       });
     } else {
       enterRoom();

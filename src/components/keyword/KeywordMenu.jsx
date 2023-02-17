@@ -9,7 +9,7 @@ const KeywordMenu = () => {
   const [chatByKeywords, setChatByKeywords] = useState([]);
 
   const initKeywords = async () => {
-    setKeywords(await getKeywordByID("test"));
+    setKeywords(await getKeywordByID(localStorage.getItem("userId")));
   };
   const initChatByKeywords = async () => {
     setChatByKeywords(await Promise.all(keywords.map((keyword) => getChatByKeyword(keyword))));
@@ -37,7 +37,6 @@ const KeywordMenu = () => {
               key={id}
               colorID={id}
               keyword={word}
-              description={`${id}번째 키워드는 ${word}입니다.`}
               chats={chatByKeywords[id]}
               buttonStyle={{ display: "block", margin: "10px 20px", color: "rgb(94, 86, 240)" }}
             />

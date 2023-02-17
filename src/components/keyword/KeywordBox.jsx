@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from "react";
 import {
   Modal,
   ModalTrigger,
@@ -7,6 +8,7 @@ import {
   ChannelBtnSmileFilledIcon,
   IconSize,
 } from "@channel.io/bezier-react";
+import { searchKeyword } from "../../api/Search.jsx";
 import KeywordPopup from "./KeywordPopup";
 import customColors from "../CustomColors";
 
@@ -22,8 +24,15 @@ const Colors = [
   "MonochromeDark",
 ];
 
-const KeywordBox = ({ colorID, keyword, description, chats, buttonStyle = {} }) => {
+const KeywordBox = ({ colorID, keyword, chats, buttonStyle = {} }) => {
   colorID = colorID % customColors.length;
+  const [searchResult, setSearchResult] = useState();
+
+  useEffect(() => {
+    searchKeyword(keyword).then((res) => {
+      setSearchResult(res.items[0]);
+    });
+  }, []);
 
   return (
     <Modal onHide={function noRefCheck() {}} onShow={function noRefCheck() {}}>
@@ -38,7 +47,7 @@ const KeywordBox = ({ colorID, keyword, description, chats, buttonStyle = {} }) 
       <KeywordPopup
         colorID={colorID}
         keyword={keyword}
-        description={description}
+        searchResult={searchResult}
         outLink={`https://www.google.com/search?q=${keyword}`}
         chats={chats}
       />
