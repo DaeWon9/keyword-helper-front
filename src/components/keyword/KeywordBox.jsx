@@ -29,6 +29,7 @@ const KeywordBox = ({ colorID, keyword, description, chats, buttonStyle = {} }) 
     <Modal onHide={function noRefCheck() {}} onShow={function noRefCheck() {}}>
       <ModalTrigger>
         <Button
+          size="XL"
           leftContent={<Icon source={ChannelBtnSmileFilledIcon} size={IconSize.Normal} />}
           text={keyword}
           style={{ ...buttonStyle, backgroundColor: customColors[colorID] }}
