@@ -18,7 +18,7 @@ const Home = () => {
   const [userStatus, setUserStatus] = useState([]);
 
   const enterRoom = () => {
-    socket.emit("enter", "test", "test");
+    socket.emit("enter", localStorage.getItem("userId"), localStorage.getItem("userNickName"));
     setIsEnter(true);
   };
 
@@ -44,7 +44,7 @@ const Home = () => {
         setChatData((prevList) => [
           ...prevList,
           {
-            chatId: "admin",
+            name: "system",
             chatContent: `${nickname}님이 입장하였습니다.`,
           },
         ]);
