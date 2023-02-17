@@ -1,0 +1,21 @@
+.user-box-container {
+  display: flex;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.user-box-container:hover {
+  background-color: gray;
+}
+
+.user-profile {
+  width: auto;
+  padding: 10px;
+}
+.user-name {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  color: white;
+  font-size: large;
+}

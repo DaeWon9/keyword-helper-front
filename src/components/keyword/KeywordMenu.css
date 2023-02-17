@@ -1,0 +1,8 @@
+.keyword-menu {
+  margin: 10px;
+}
+
+.keyword-menu-header {
+  display: flex;
+  align-items: center;
+}
