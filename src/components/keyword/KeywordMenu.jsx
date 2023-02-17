@@ -38,7 +38,6 @@ const KeywordMenu = () => {
               key={id}
               colorID={id}
               keyword={word}
-              description={`${id}번째 키워드는 ${word}입니다.`}
               chats={chatByKeywords[id]}
               buttonStyle={{ display: "block", margin: "10px 20px", color: "rgb(94, 86, 240)" }}
             />
