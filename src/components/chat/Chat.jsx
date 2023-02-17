@@ -6,10 +6,10 @@ const Chat = (props) => {
   let time = String(props.time);
   time = String(time.split("T")[1]).split(".")[0];
 
-  return props.chatId === "admin" ? (
+  return props.name === "system" ? (
     <div className="chat-container" style={{ justifyContent: "center", padding: "5px" }}>
       <div className="chat-right-content" style={{ color: "gray" }}>
-        {props.chatContent} {props.time}
+        {props.chatContent}
       </div>
     </div>
   ) : (
