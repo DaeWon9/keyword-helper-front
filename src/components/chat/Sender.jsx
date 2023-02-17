@@ -17,7 +17,7 @@ const Sender = (props) => {
       return;
     }
     console.log(name, inputContent);
-    // props.socketRef.current.emit("chat", { name, inputContent });
+    props.socket.emit("new_message", inputContent);
     e.preventDefault();
     setInputContent("");
   };

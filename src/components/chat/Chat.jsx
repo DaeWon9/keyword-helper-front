@@ -1,11 +1,28 @@
 import React from "react";
+import { Avatar } from "@channel.io/bezier-react";
 import "./Chat.css";
 
 const Chat = (props) => {
-  return (
+  return props.chatId === "cc" ? (
+    <div className="chat-container" style={{ justifyContent: "center", padding: "5px" }}>
+      <div className="chat-right-content" style={{ color: "gray" }}>
+        {props.chatContent} 09:49 PM
+      </div>
+    </div>
+  ) : (
     <div className="chat-container">
-      <div className="chat-left">{props.name}</div>
-      <div className="chat-right">{props.chatContent}</div>
+      <div className="chat-left">
+        <Avatar
+          name="Channel.io"
+          avatarUrl="https://cf.channel.io/thumb/200x200/pub-file/1/606d87d059a6093594c0/ch-symbol-filled-smiley-bg.png"
+          size={42}
+        />
+      </div>
+      <div className="chat-right">
+        <span className="chat-right-name">{props.name}</span>
+        <span className="chat-right-time">09:49 PM</span>
+        <div className="chat-right-content">{props.chatContent}</div>
+      </div>
     </div>
   );
 };
