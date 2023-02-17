@@ -28,8 +28,10 @@ const Home = () => {
   };
 
   useEffect(() => {
+    console.log("try enter");
     enterRoom();
     if (isEnter) {
+      console.log("enter");
       socket.on("new_entry", (nickname) => {
         console.log(`${nickname}님이 입장하였습니다.`);
       });
