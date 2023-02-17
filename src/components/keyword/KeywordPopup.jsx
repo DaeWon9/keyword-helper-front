@@ -9,6 +9,7 @@ import {
   ButtonStyleVariant,
   Tooltip,
 } from "@channel.io/bezier-react";
+import ChatBox from "../chat/ChatBox";
 import "./KeywordPopup.css";
 import customColors from "../CustomColors";
 
@@ -54,13 +55,9 @@ const KeywordPopup = ({ colorID, keyword, description, outLink, chats }) => {
           <div className="modal-right">
             <div className="modal-chat">
               {!Array.isArray(chats) ? (
-                <></>
+                <span>Loading previous chat...</span>
               ) : (
-                chats.map((chat) => (
-                  <p>
-                    {chat.user_id} sent {chat.message} at {chat.created_at}
-                  </p>
-                ))
+                chats.map((chat) => <ChatBox key={chat.id} chatData={chat} />)
               )}
             </div>
           </div>

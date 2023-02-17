@@ -1,5 +1,5 @@
+import { Icon, SendForwardIcon } from "@channel.io/bezier-react";
 import React, { useState, useEffect } from "react";
-import { BiPaperPlane } from "react-icons/bi";
 import "./Sender.css";
 
 const Sender = (props) => {
@@ -37,7 +37,7 @@ const Sender = (props) => {
         onKeyPress={handleOnKeyPress}
       />
       <div className="send-button" onClick={onMessageSubmit}>
-        {<BiPaperPlane />}
+        {<Icon source={SendForwardIcon} />}
       </div>
     </div>
   );

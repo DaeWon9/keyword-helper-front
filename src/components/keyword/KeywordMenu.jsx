@@ -9,7 +9,7 @@ const KeywordMenu = () => {
   const [chatByKeywords, setChatByKeywords] = useState([]);
 
   const initKeywords = async () => {
-    setKeywords(await getKeywordByID("asd"));
+    setKeywords(await getKeywordByID("test"));
   };
   const initChatByKeywords = async () => {
     setChatByKeywords(await Promise.all(keywords.map((keyword) => getChatByKeyword(keyword))));
@@ -25,12 +25,12 @@ const KeywordMenu = () => {
   return (
     <div className="keyword-menu">
       <div className="keyword-menu-header">
-        <Icon source={LightbulbIcon} size={IconSize.L} marginRight={3} marginLeft={10} />
+        <Icon source={LightbulbIcon} size={IconSize.L} marginRight={3} marginLeft={3} />
         <h1>Keywords</h1>
       </div>
       <div className="keyword-menu-content">
         {keywords == null ? (
-          <p>Loading keywords...</p>
+          <span>Loading keywords...</span>
         ) : (
           keywords.map((word, id) => (
             <KeywordBox
@@ -39,7 +39,7 @@ const KeywordMenu = () => {
               keyword={word}
               description={`${id}번째 키워드는 ${word}입니다.`}
               chats={chatByKeywords[id]}
-              buttonStyle={{ display: "block", margin: "10px 20px" }}
+              buttonStyle={{ display: "block", margin: "10px 20px", color: "rgb(94, 86, 240)" }}
             />
           ))
         )}
