@@ -51,6 +51,20 @@ const Home = () => {
       });
 
       socket.on("new_leave", (nickname, users) => {
+        users = users.sort((a, b) => {
+          // 이름순으로 정렬
+          if (a.nickname > b.nickname) return 1;
+          if (a.nickname < b.nickname) return -1;
+        });
+
+        users = users.sort((a) => {
+          if (a.status === "connect") return -1;
+        });
+
+        users = users.sort((a) => {
+          // 본인은 맨 앞으로
+          if (a.nickname === "test") return -1;
+        });
         setUserStatus(users);
       });
 
@@ -90,13 +104,6 @@ const Home = () => {
     <div className="home">
       <div className="home-left">
         <UserList userStatus={userStatus} />
-        {/* <UserBox name="test1" status={StatusType.Online} />
-        <UserBox name="test2" status={StatusType.Offline} />
-        <UserBox name="test3" status={StatusType.OfflineCrescent} />
-        <UserBox name="test4" status={StatusType.OnlineCrescent} />
-        <UserBox name="test5" status={StatusType.Offline} />
-        <UserBox name="test6" status={StatusType.Offline} />
-        <UserBox name="test7" status={StatusType.Offline} /> */}
       </div>
       <div className="home-right">
         <div className="home-header">KEYWORD-HELPER</div>
