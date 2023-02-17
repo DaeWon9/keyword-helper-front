@@ -2,9 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./index.css";
+import { BezierProvider, LightFoundation } from "@channel.io/bezier-react";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <App />
+    <BezierProvider foundation={LightFoundation}>
+      <App />
+    </BezierProvider>
   </React.StrictMode>,
 );
