@@ -9,7 +9,8 @@ const KeywordMenu = () => {
   const [chatByKeywords, setChatByKeywords] = useState([]);
 
   const initKeywords = async () => {
-    setKeywords(await getKeywordByID(localStorage.getItem("userId")));
+    //setKeywords(await getKeywordByID(localStorage.getItem("userId")));
+    setKeywords(await getKeywordByTime(300));
   };
   const initChatByKeywords = async () => {
     setChatByKeywords(await Promise.all(keywords.map((keyword) => getChatByKeyword(keyword))));

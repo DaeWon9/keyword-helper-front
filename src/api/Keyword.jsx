@@ -10,7 +10,7 @@ const getKeywordByID = async (userID) => {
 
 const getKeywordByTime = async (time) => {
   const { data } = await axios.post(
-    import.meta.env.VITE_KEYWORD_BACK_URL + "/chatgpt/time?minutes=" + time,
+    import.meta.env.VITE_KEYWORD_BACK_URL + `/chatgpt/time?minutes=${time}`,
   );
   return data;
 };
@@ -22,4 +22,11 @@ const getChatByKeyword = async (keyword) => {
   return data;
 };
 
-export { getKeywordByID, getKeywordByTime, getChatByKeyword };
+const getUsernameByID = async (userID) => {
+  const { data } = await axios.get(
+    import.meta.env.VITE_KEYWORD_BACK_URL + "/users/get_nickname_by_id?user_id=" + userID,
+  );
+  return data;
+};
+
+export { getKeywordByID, getKeywordByTime, getChatByKeyword, getUsernameByID };

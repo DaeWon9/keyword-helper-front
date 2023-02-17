@@ -91,7 +91,17 @@ const KeywordPopup = ({ colorID, keyword, searchResult, outLink, chats }) => {
               {!Array.isArray(chats) ? (
                 <span>Loading previous chat...</span>
               ) : (
-                chats.map((chat) => <ChatBox key={chat.id} chatData={chat} />)
+                <ChatBox
+                  chatData={chats.map(({ chat, nickname }) => {
+                    const newChat = {
+                      chatId: chat.id,
+                      name: nickname,
+                      chatContent: chat.chat,
+                      time: chat.created_at,
+                    };
+                    return newChat;
+                  })}
+                />
               )}
             </div>
           </div>

@@ -4,11 +4,11 @@
   /* border: 1px solid black; */
   /* width: 100%; */
   height: auto;
-  color: black;
+  color: white;
   padding-right: 10px;
 }
 .chat-container:hover {
-  background-color: rgb(200, 200, 200);
+  background-color: rgb(50, 50, 50);
 }
 
 .chat-left {
