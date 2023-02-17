@@ -12,6 +12,8 @@ import {
 import ChatBox from "../chat/ChatBox";
 import "./KeywordPopup.css";
 import customColors from "../CustomColors";
+import { useState, useEffect } from "react";
+import { getUsernameByID } from "../../api/Keyword";
 
 const KeywordPopup = ({ colorID, keyword, description, outLink, chats }) => {
   const openInNewTab = (url) => {
@@ -57,7 +59,17 @@ const KeywordPopup = ({ colorID, keyword, description, outLink, chats }) => {
               {!Array.isArray(chats) ? (
                 <span>Loading previous chat...</span>
               ) : (
-                chats.map((chat) => <ChatBox key={chat.id} chatData={chat} />)
+                <ChatBox
+                  chatData={chats.map((chat) => {
+                    const newChat = {
+                      chatId: chat.id,
+                      name: chat.user_id,
+                      chatContent: chat.chat,
+                      time: chat.created_at,
+                    };
+                    return newChat;
+                  })}
+                />
               )}
             </div>
           </div>
