@@ -30,14 +30,14 @@ const KeywordPopup = ({ colorID, keyword, searchResult, outLink, chats }) => {
               <div
                 style={{
                   position: "absolute",
-                  left: keywordBoxRef.current.offsetLeft - 100,
+                  left: keywordBoxRef.current.offsetLeft - 300,
                   top: keywordBoxRef.current.offsetTop,
                 }}
               >
                 <img
                   src={searchResult ? searchResult.thumbnail : ""}
-                  width={100}
-                  height={100}
+                  width={300}
+                  height={150}
                 ></img>
               </div>
             ) : (

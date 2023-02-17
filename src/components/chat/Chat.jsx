@@ -2,6 +2,10 @@ import React from "react";
 import { Avatar } from "@channel.io/bezier-react";
 import "./Chat.css";
 
+const customIcons = [
+  "https://cf.channel.io/thumb/200x200/pub-file/1/606d87d059a6093594c0/ch-symbol-filled-smiley-bg.png",
+];
+
 const Chat = (props) => {
   let time = String(props.time);
   time = String(time.split("T")[1]).split(".")[0];
@@ -17,7 +21,7 @@ const Chat = (props) => {
       <div className="chat-left">
         <Avatar
           name="Channel.io"
-          avatarUrl="https://cf.channel.io/thumb/200x200/pub-file/1/606d87d059a6093594c0/ch-symbol-filled-smiley-bg.png"
+          avatarUrl={`https://picsum.photos/500/500?img=${props.name.charCodeAt(0)}`}
           size={42}
         />
       </div>

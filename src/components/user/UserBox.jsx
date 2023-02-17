@@ -8,7 +8,7 @@ const UserBox = (props) => {
       <div className="user-profile">
         <Avatar
           name="Channel.io"
-          avatarUrl="https://cf.channel.io/thumb/200x200/pub-file/1/606d87d059a6093594c0/ch-symbol-filled-smiley-bg.png"
+          avatarUrl={`https://picsum.photos/500/500?img=${props.name.charCodeAt(0)}`}
           size={32}
           status={props.status === "connect" ? "Online" : "Offline"}
         />
