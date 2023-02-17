@@ -36,7 +36,7 @@ const customColors = [
   "#C2C8DD",
 ];
 
-const KeywordBox = ({ colorID, text, style = {} }) => {
+const KeywordBox = ({ colorID, text, style = {}, onClick }) => {
   return (
     <div className="keyword-box">
       <HStack justify="start">
@@ -46,6 +46,8 @@ const KeywordBox = ({ colorID, text, style = {} }) => {
             text={text}
             style={{ ...style, backgroundColor: customColors[colorID % customColors.length] }}
             styleVariant={ButtonStyleVariant.FloatingAlt}
+            size="XL"
+            onClick={onClick}
           />
         </StackItem>
       </HStack>
