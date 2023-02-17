@@ -10,7 +10,7 @@ const UserBox = (props) => {
           name="Channel.io"
           avatarUrl="https://cf.channel.io/thumb/200x200/pub-file/1/606d87d059a6093594c0/ch-symbol-filled-smiley-bg.png"
           size={32}
-          status={props.status}
+          status={props.status === "connect" ? "Online" : "Offline"}
         />
       </div>
       <div className="user-name">{props.name}</div>

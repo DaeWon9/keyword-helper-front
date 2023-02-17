@@ -9,6 +9,7 @@
   height: calc(100% - 80px);
   padding-top: 80px;
   background-color: rgb(37, 37, 37);
+  overflow-y: auto;
 }
 
 .home-right {
