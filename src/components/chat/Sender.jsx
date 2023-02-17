@@ -16,7 +16,6 @@ const Sender = (props) => {
     if (inputContent === "") {
       return;
     }
-    console.log(name, inputContent);
     props.socket.emit("new_message", inputContent);
     e.preventDefault();
     setInputContent("");

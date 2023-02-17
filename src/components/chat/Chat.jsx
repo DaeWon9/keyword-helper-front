@@ -3,10 +3,13 @@ import { Avatar } from "@channel.io/bezier-react";
 import "./Chat.css";
 
 const Chat = (props) => {
-  return props.chatId === "cc" ? (
+  let time = String(props.time);
+  time = String(time.split("T")[1]).split(".")[0];
+
+  return props.chatId === "admin" ? (
     <div className="chat-container" style={{ justifyContent: "center", padding: "5px" }}>
       <div className="chat-right-content" style={{ color: "gray" }}>
-        {props.chatContent} 09:49 PM
+        {props.chatContent} {props.time}
       </div>
     </div>
   ) : (
@@ -20,7 +23,7 @@ const Chat = (props) => {
       </div>
       <div className="chat-right">
         <span className="chat-right-name">{props.name}</span>
-        <span className="chat-right-time">09:49 PM</span>
+        <span className="chat-right-time">{time}</span>
         <div className="chat-right-content">{props.chatContent}</div>
       </div>
     </div>
